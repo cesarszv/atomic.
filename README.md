@@ -1,42 +1,26 @@
 <div align="center">
   <img src="assets/logo.png" alt="ATOMIC logo" width="96" />
   <h1>ATOMIC Landing</h1>
-  <p><strong>A calm public landing page for an open habit tracker built around ownership, clarity, and low noise.</strong></p>
+  <p><strong>Private, low-noise habit tracking in progress.</strong></p>
   <p>
-    <a href="https://cesarszv.github.io/atomic./">Live site</a> ·
-    <a href="index.html">Page source</a> ·
-    <a href="https://github.com/cesarszv/atomic">Parent project</a>
+    <a href="index.html">English</a> ·
+    <a href="es.html">Español</a>
   </p>
 </div>
 
 ![ATOMIC banner](assets/banner.png)
 
-## Purpose
+## English
 
-This repository contains the public marketing surface for **ATOMIC**: a small, static landing page for people who want to understand the product before using or contributing to it.
+### Purpose
 
-ATOMIC helps people build and understand habits without turning personal progress into a feed, a competition, or a surveillance product.
+This folder contains the public landing page for **ATOMIC**, a private product in development for tracking habits, noticing progress patterns, and keeping routines clear without turning personal work into a public feed.
 
-## What The Page Says
+Access to the product is limited to the owner and team. The landing page is informational only; it is not a public signup surface.
 
-- **Ownership first.** Habits and progress should stay understandable and portable.
-- **Calm by default.** The product should help people notice patterns, not manufacture anxiety.
-- **Small surface area.** Track habits, review progress, export data, and get out of the way.
-- **Public-safe copy.** The landing page avoids implementation details, credentials, private infrastructure, sensitive roadmap notes, and internal architecture.
+### Run locally
 
-## Site Structure
-
-```text
-.
-├── index.html       # Static GitHub Pages entry point
-├── styles.css       # Plain CSS, no build step
-├── assets/
-│   ├── banner.png   # Social preview and page visual
-│   └── logo.png     # Logo and favicon
-└── .nojekyll        # Keep GitHub Pages serving files as-is
-```
-
-## Local Preview
+This is a static site: HTML, CSS, and image assets only. There is no package install, build step, or landing-specific script.
 
 Open `index.html` directly, or serve the folder with any static server:
 
@@ -46,16 +30,44 @@ python3 -m http.server 4173
 
 Then visit `http://localhost:4173`.
 
-## Deployment
+### Public-content safety
 
-The site is designed for GitHub Pages from the `main` branch at the repository root. No package install, build command, or generated output is required.
+Everything in this folder is public internet content. Keep copy high-level and product-facing. Do not include source code, architecture internals, APIs, schemas, credentials, private docs, database details, deployment details, business-sensitive strategy, roadmap specifics, security details, or implementation details that could help reverse engineer the product.
 
-Expected public URL:
+### Tone
 
-```text
-https://cesarszv.github.io/atomic./
+- Calm, professional, and direct.
+- Product idea over technology.
+- Private work-in-progress, not public launch messaging.
+- No hype, public roadmap, or signup promises.
+
+## Español
+
+### Propósito
+
+Esta carpeta contiene la página pública de **ATOMIC**, un producto privado en desarrollo para dar seguimiento a hábitos, notar patrones de progreso y mantener rutinas claras sin convertir el trabajo personal en un feed público.
+
+El acceso al producto está limitado al propietario y al equipo. La página es solo informativa; no es una superficie de registro público.
+
+### Ejecutar localmente
+
+Este es un sitio estático: HTML, CSS e imágenes. No hay instalación de paquetes, proceso de build ni script específico para la landing.
+
+Abre `index.html` o `es.html` directamente, o sirve la carpeta con cualquier servidor estático:
+
+```bash
+python3 -m http.server 4173
 ```
 
-## Content Safety
+Luego visita `http://localhost:4173`.
 
-Everything in this repository is public internet content. Keep copy high-level and product-facing. Do not add source code internals, API details, credentials, deployment details, business-sensitive strategy, or security-sensitive information.
+### Seguridad del contenido público
+
+Todo en esta carpeta es contenido público de internet. Mantén el texto en un nivel general y orientado al producto. No incluyas código fuente, detalles de arquitectura, APIs, esquemas, credenciales, documentación privada, detalles de base de datos, despliegue, estrategia sensible del negocio, roadmap específico, seguridad ni detalles de implementación que ayuden a reconstruir el producto.
+
+### Tono
+
+- Tranquilo, profesional y directo.
+- La idea del producto por encima de la tecnología.
+- Producto privado en desarrollo, no mensaje de lanzamiento público.
+- Sin hype, roadmap público ni promesas de registro.
