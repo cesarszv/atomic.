@@ -1,0 +1,71 @@
+---
+import '../styles/styles.css';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+  canonical?: string;
+  alternateEn?: string;
+  alternateEs?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogUrl?: string;
+  ogImage?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+}
+
+const {
+  title,
+  description,
+  lang = 'en-US',
+  canonical = 'https://cesarszv.github.io/atomic./',
+  alternateEn = 'index.html',
+  alternateEs = 'es.html',
+  ogTitle,
+  ogDescription,
+  ogUrl = 'https://cesarszv.github.io/atomic./',
+  ogImage = 'https://cesarszv.github.io/atomic./assets/banner.png',
+  twitterTitle,
+  twitterDescription,
+  twitterImage = 'https://cesarszv.github.io/atomic./assets/banner.png',
+} = Astro.props;
+
+const currentOgTitle = ogTitle || title;
+const currentOgDescription = ogDescription || description;
+const currentTwitterTitle = twitterTitle || title;
+const currentTwitterDescription = twitterDescription || description;
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f6f3eb" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en-US" href={alternateEn} />
+    <link rel="alternate" hreflang="es-419" href={alternateEs} />
+    <link rel="alternate" hreflang="x-default" href={alternateEn} />
+    <link rel="icon" href={`${baseUrl}assets/logo.png`} type="image/png" />
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={currentOgTitle} />
+    <meta property="og:description" content={currentOgDescription} />
+    <meta property="og:url" content={ogUrl} />
+    <meta property="og:image" content={ogImage} />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={currentTwitterTitle} />
+    <meta name="twitter:description" content={currentTwitterDescription} />
+    <meta name="twitter:image" content={twitterImage} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "landing",
+  "version": "1.0.0",
+  "description": "ATOMIC - Private habit tracking in progress",
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_DEV_BACKGROUND=1 astro dev",
+    "start": "ASTRO_DEV_BACKGROUND=1 astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^7.0.0"
+  }
+}

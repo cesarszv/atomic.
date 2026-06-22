@@ -1,0 +1,14 @@
+---
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'en-US' } = Astro.props;
+const isEs = lang.startsWith('es');
+---
+
+<footer class="site-footer">
+  <span translate="no">ATOMIC</span>
+  <span>{isEs ? "Seguimiento privado de hábitos en desarrollo." : "Private habit tracking in progress."}</span>
+  <a class="button secondary" href="https://github.com/cesarszv/atomic" target="_blank" rel="noopener">GitHub</a>
+</footer>

@@ -1,0 +1,109 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import banner from '../assets/banner.png';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('landing');
+  return entries.map((entry) => {
+    // English 'en' should map to the root index page (slug: undefined)
+    // Spanish 'es' should map to es.html (slug: 'es')
+    const slug = entry.id === 'en' ? undefined : entry.id;
+    return {
+      params: { slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+
+const isEs = data.lang.startsWith('es');
+const baseUrl = import.meta.env.BASE_URL;
+const canonicalUrl = isEs
+  ? 'https://cesarszv.github.io/atomic./es.html'
+  : 'https://cesarszv.github.io/atomic./';
+---
+
+<Layout
+  title={data.title}
+  description={data.description}
+  lang={data.lang}
+  canonical={canonicalUrl}
+  alternateEn={`${baseUrl}index.html`}
+  alternateEs={`${baseUrl}es.html`}
+  ogTitle={data.title}
+  ogDescription={data.description}
+  ogUrl={canonicalUrl}
+  ogImage="https://cesarszv.github.io/atomic./assets/banner.png"
+  twitterTitle={data.title}
+  twitterDescription={data.description}
+  twitterImage="https://cesarszv.github.io/atomic./assets/banner.png"
+>
+  <a class="skip-link" href="#main">{isEs ? 'Saltar al contenido' : 'Skip to content'}</a>
+  <Header lang={data.lang} />
+
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">{data.hero.eyebrow}</p>
+        <h1 id="hero-title">{data.hero.title}</h1>
+        <p class="lede" set:html={data.hero.lede.replace('ATOMIC', '<span translate="no">ATOMIC</span>')} />
+      </div>
+
+      <div class="lab-card" aria-label={isEs ? 'Resumen de postura del producto ATOMIC' : 'ATOMIC product posture summary'}>
+        <img src={banner.src} alt={isEs ? 'Banner de identidad visual de ATOMIC' : 'ATOMIC visual identity banner'} width="2172" height="724" fetchpriority="high" />
+        <dl>
+          <div>
+            <dt>{isEs ? 'Enfoque' : 'Focus'}</dt>
+            <dd>{data.hero.card.focus}</dd>
+          </div>
+          <div>
+            <dt>{isEs ? 'Calma' : 'Quiet'}</dt>
+            <dd>{data.hero.card.quiet}</dd>
+          </div>
+          <div>
+            <dt>{isEs ? 'Estado' : 'Status'}</dt>
+            <dd>{data.hero.card.status}</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="idea" class="section" aria-labelledby="idea-title">
+      <p class="eyebrow">{data.idea.eyebrow}</p>
+      <h2 id="idea-title">{data.idea.title}</h2>
+      <div class="grid">
+        {data.idea.items.map((item) => (
+          <article>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="principles" class="section split" aria-labelledby="principles-title">
+      <div>
+        <p class="eyebrow">{data.principles.eyebrow}</p>
+        <h2 id="principles-title">{data.principles.title}</h2>
+      </div>
+      <ul class="checklist">
+        {data.principles.items.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </section>
+
+    <section id="access" class="section source" aria-labelledby="access-title">
+      <p class="eyebrow">{data.access.eyebrow}</p>
+      <h2 id="access-title">{data.access.title}</h2>
+      <p set:html={data.access.description.replace('ATOMIC', '<span translate="no">ATOMIC</span>')} />
+    </section>
+  </main>
+
+  <Footer lang={data.lang} />
+</Layout>
