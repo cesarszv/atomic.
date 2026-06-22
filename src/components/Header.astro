@@ -11,7 +11,7 @@ const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <header class="site-header" aria-label={isEs ? "Encabezado del sitio" : "Site header"}>
-  <a class="brand" href={isEs ? `${baseUrl}es.html` : `${baseUrl}index.html`} aria-label={isEs ? "Inicio de ATOMIC" : "ATOMIC home"}>
+  <a class="brand" href={isEs ? "es.html" : "index.html"} aria-label={isEs ? "Inicio de ATOMIC" : "ATOMIC home"}>
     <img src={logo.src} alt="" width="40" height="40" />
     <span translate="no">ATOMIC</span>
   </a>
@@ -20,8 +20,8 @@ const baseUrl = import.meta.env.BASE_URL;
     <a href="#principles">{isEs ? "Principios" : "Principles"}</a>
     <a href="#access">{isEs ? "Acceso" : "Access"}</a>
     <div class="language-switcher" role="group" aria-label={isEs ? "Idioma" : "Language"}>
-      <a aria-current={!isEs ? "page" : undefined} lang="en-US" href={`${baseUrl}index.html`}>EN</a>
-      <a aria-current={isEs ? "page" : undefined} lang="es-419" href={`${baseUrl}es.html`}>ES</a>
+      <a aria-current={!isEs ? "page" : undefined} lang="en-US" href="index.html">EN</a>
+      <a aria-current={isEs ? "page" : undefined} lang="es-419" href="es.html">ES</a>
     </div>
   </nav>
 </header>
